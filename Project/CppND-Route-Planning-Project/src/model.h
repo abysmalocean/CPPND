@@ -10,6 +10,7 @@ class Model
 public:
     struct Node 
     {
+        // cordinate
         double x = 0.f;
         double y = 0.f;
     };
