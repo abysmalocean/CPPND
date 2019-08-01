@@ -8,27 +8,43 @@
 class Model
 {
 public:
-    struct Node {
+    struct Node 
+    {
         double x = 0.f;
         double y = 0.f;
     };
     
-    struct Way {
+    struct Way 
+    {
         std::vector<int> nodes;
     };
     
-    struct Road {
-        enum Type { Invalid, Unclassified, Service, Residential,
-            Tertiary, Secondary, Primary, Trunk, Motorway, Footway };
+    struct Road 
+    {
+        enum Type 
+        { 
+            Invalid, 
+            Unclassified, 
+            Service, 
+            Residential,
+            Tertiary, 
+            Secondary, 
+            Primary, 
+            Trunk, 
+            Motorway, 
+            Footway 
+        };
         int way;
         Type type;
     };
     
-    struct Railway {
+    struct Railway 
+    {
         int way;
     };    
     
-    struct Multipolygon {
+    struct Multipolygon 
+    {
         std::vector<int> outer;
         std::vector<int> inner;
     };

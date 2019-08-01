@@ -56,3 +56,24 @@ Exercises with tests will specify which string to pass with `-DTESTING`, but a t
 | Write the A\* Search Stub   |        "AStarStub"       |
 | Finish A\* Search           |       "AStarSearch"      |
 
+### Cairo/Xlib on Linux
+CMake script expects cairo and graphicsmagick to be installed. libpng is required in order to run tests.
+These installation steps assume APT package manager on Ubuntu Linux.
+Installation steps:
+1. Refresh apt: `sudo apt update`
+2. Install GCC: `sudo apt install build-essential`
+3. Install CMake: `sudo apt install cmake`
+4. Install Cairo: `sudo apt install libcairo2-dev`
+5. Install graphicsmagick: `sudo apt install libgraphicsmagick1-dev`
+6. Install libpng: `sudo apt install libpng-dev`
+
+Example of CMake execution:
+```
+git clone --recurse-submodules https://github.com/cpp-io2d/P0267_RefImpl
+cd P0267_RefImpl
+mkdir Debug
+cd Debug
+cmake --config Debug "-DCMAKE_BUILD_TYPE=Debug" ..
+cmake --build .
+make install
+```
