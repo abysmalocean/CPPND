@@ -4,6 +4,7 @@
 #include <string>
 #include <io2d.h>
 #include "route_model.h"
+#include "route_planner.h"
 
 using namespace std::experimental; 
 
@@ -75,9 +76,34 @@ int main(int argc, const char **argv)
     // TODO 1: declare floats 'start_x', 'start_y', and 'end_x', 'end_y' and 
     // get user input for these values using std::cin, pass the user input to
     // the RouterPlanner object below in place of 10, 10, 90, 90.
-
+    
     // Build Model
     RouteModel model{osm_data};
+
+    float start_x, start_y, end_x, end_y;
+
+
+#ifndef NDEBUG
+    RoutePlanner route_planner{model, 10, 10, 90, 90};
+#else
+    std::cout<<"The map coordinates begin at (0,0) "; 
+    std::cout<<"in the lower left corner, and end at"; 
+    std::cout<<"(100,100= in the upper right." << std::endl;
+    
+    std::cout<<"Enter a start x between 0 and 100 : ";
+    std::cin>>start_x;
+
+    std::cout<<"Enter a start y between 0 and 100 : ";
+    std::cin>>start_y;
+
+    std::cout<<"Enter a end x between 0 and 100 : ";
+    std::cin>>end_x;
+
+    std::cout<<"Enter a end y between 0 and 100 : ";
+    std::cin>>end_y;
+    // Create RoutePlanner object and perform A* search
+    RoutePlanner route_planner{model, start_x, start_y, end_x, end_y};
+#endif
 
     return 1;
 
